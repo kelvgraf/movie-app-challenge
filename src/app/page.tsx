@@ -125,6 +125,7 @@ export default function HomePage() {
                   }
                   rating={Math.round(movie.vote_average * 10)}
                   genres={movieGenres}
+                  id={movie.id}
                 />
               );
             })}
