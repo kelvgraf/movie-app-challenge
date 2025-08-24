@@ -1,0 +1,135 @@
+@import "tailwindcss";
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+:root {
+  /* ================= PURPLE DARK ================= */
+  --purple-dark-1: #18111b;
+  --purple-dark-2: #1e1523;
+  --purple-dark-3: #3d224e;
+  --purple-dark-4: #48295c;
+  --purple-dark-5: #54346b;
+  --purple-dark-6: #664282;
+  --purple-dark-7: #8457aa;
+  --purple-dark-8: #8e4ec6;
+  --purple-dark-9: #9a5cd0;
+  --purple-dark-10: #d19dff;
+  --purple-dark-11: #ecd9fa;
+
+  --purple-dark-alpha-1: #b412f90b;
+  --purple-dark-alpha-2: #b744f7;
+  --purple-dark-alpha-3: #c150ff2d;
+  --purple-dark-alpha-4: #bb53fd42;
+  --purple-dark-alpha-5: #be5cfd51;
+  --purple-dark-alpha-6: #c16dfd61;
+  --purple-dark-alpha-7: #c378fd7a;
+  --purple-dark-alpha-8: #c47effa4;
+  --purple-dark-alpha-9: #b661ffc2;
+  --purple-dark-alpha-10: #bc6fffcd;
+  --purple-dark-alpha-11: #d19dff;
+  --purple-dark-alpha-12: #f1ddfffa;
+
+  /* ================= PURPLE ================= */
+  --purple-1: #fefcfe;
+  --purple-2: #fbf7fe;
+  --purple-3: #f7edfe;
+  --purple-4: #f2e2fc;
+  --purple-5: #ead5f9;
+  --purple-6: #e0c4f4;
+  --purple-7: #d1afec;
+  --purple-8: #be93e4;
+  --purple-9: #8e4ec6;
+  --purple-10: #8347b9;
+  --purple-11: #8145b5;
+  --purple-12: #402060;
+
+  --purple-alpha-1: #aa00aa03;
+  --purple-alpha-2: #8000e008;
+  --purple-alpha-3: #8e00f112;
+  --purple-alpha-4: #8d00e51d;
+  --purple-alpha-5: #8000db2a;
+  --purple-alpha-6: #7a01d03b;
+  --purple-alpha-7: #6d00c350;
+  --purple-alpha-8: #6600c06c;
+  --purple-alpha-9: #5c00adb1;
+  --purple-alpha-10: #53009eb8;
+  --purple-alpha-11: #52009aba;
+  --purple-alpha-12: #250049df;
+
+  /* ================= MAUVE DARK ================= */
+  --mauve-dark-1: #121113;
+  --mauve-dark-2: #1a191b;
+  --mauve-dark-3: #232225;
+  --mauve-dark-4: #2b292d;
+  --mauve-dark-5: #323035;
+  --mauve-dark-6: #3c393f;
+  --mauve-dark-7: #49474e;
+  --mauve-dark-8: #625f69;
+  --mauve-dark-9: #6f6d78;
+  --mauve-dark-10: #7c7a85;
+  --mauve-dark-11: #b5b2bc;
+  --mauve-dark-12: #eeeef0;
+
+  --mauve-dark-alpha-1: #00000000;
+  --mauve-dark-alpha-2: #f5f4f609;
+  --mauve-dark-alpha-3: #ebeaf814;
+  --mauve-dark-alpha-4: #eee5f81d;
+  --mauve-dark-alpha-5: #efe6fe25;
+  --mauve-dark-alpha-6: #f1e6fd30;
+  --mauve-dark-alpha-7: #eee9ff40;
+  --mauve-dark-alpha-8: #eee7ff5d;
+  --mauve-dark-alpha-9: #eae6fd6e;
+  --mauve-dark-alpha-10: #ece9fd7c;
+  --mauve-dark-alpha-11: #f5f1ffb7;
+  --mauve-dark-alpha-12: #fdfdffef;
+
+  /* ================= MAUVE ================= */
+  --mauve-1: #fdfcfd;
+  --mauve-2: #faf9fb;
+  --mauve-3: #f2eff3;
+  --mauve-4: #eae7ec;
+  --mauve-5: #e3dfe6;
+  --mauve-6: #dbd8e0;
+  --mauve-7: #d0cdd7;
+  --mauve-8: #bcbac7;
+  --mauve-9: #8e8c99;
+  --mauve-10: #84828e;
+  --mauve-11: #65636d;
+  --mauve-12: #211f26;
+
+  --mauve-alpha-1: #55005503;
+  --mauve-alpha-2: #2b005506;
+  --mauve-alpha-3: #30004010;
+  --mauve-alpha-4: #20003618;
+  --mauve-alpha-5: #20003820;
+  --mauve-alpha-6: #14003527;
+  --mauve-alpha-7: #10003332;
+  --mauve-alpha-8: #08003145;
+  --mauve-alpha-9: #05001d73;
+  --mauve-alpha-10: #0500197d;
+  --mauve-alpha-11: #0400119c;
+  --mauve-alpha-12: #020008e0;
+}
