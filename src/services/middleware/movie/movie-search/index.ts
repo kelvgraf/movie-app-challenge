@@ -8,27 +8,17 @@ export const getMovieSearchModdleware = async (
   params: IgetSearchMovies
 ): Promise<void> => {
   try {
-    const data = await getSearchMovies(params.query, params.page ?? 1);
-    const totalMovieFound = data?.total_results;
-    const totalPages = data?.total_pages;
-
+    const data = await getSearchMovies(params.query, params.page, params.genre);
+    console.log("data", data);
     if (params?.onSuccess) {
       params.onSuccess({
-        moviesSearch: data.results, // aqui os filmes
-        total: totalMovieFound,
-        totalPages: totalPages,
+        moviesSearch: data?.results,
+        totalPages: data?.total_pages,
+        total: 0,
         params,
       });
-      return;
-    }
-
-    // se não encontrou filmes
-    if (params?.onError) {
-      params.onError(params);
     }
   } catch {
-    if (params?.onError) {
-      params.onError(params);
-    }
+    if (params?.onError) params.onError(params);
   }
 };

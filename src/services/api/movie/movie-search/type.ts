@@ -3,6 +3,7 @@ export interface IgetSearchMovies {
   onError?: (params?: IgetSearchMovies) => void;
   page: number;
   query: string;
+  genre: number | null;
 }
 
 interface IOnSuccessParams {

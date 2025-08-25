@@ -21,15 +21,9 @@ export default function HomePage() {
   const [totalResults, setTotalResults] = useState<number | null>(null);
   const [search, setSearch] = useState("");
   const [genres, setGenres] = useState<{ genreMovie?: { genres?: any[] } }>();
+  const [showGenres, setShowGenres] = useState(false);
+  const [selectedGenre, setSelectedGenre] = useState<number | null>(null);
   const debouncedQuery = useDebounce(search, 600);
-
-  const mapGenres = (genreIds: number[]) => {
-    return genreIds
-      .map(
-        (id) => genres?.genreMovie?.genres?.find((g: any) => g.id === id)?.name
-      )
-      .filter(Boolean) as string[];
-  };
 
   useEffect(() => {
     console.log("!apiCache[apiPage]", apiCache, apiPage);
@@ -51,10 +45,10 @@ export default function HomePage() {
 
     if (!genres?.genreMovie?.genres?.length) {
       getGenreMovieMiddleware({
-        onSuccess: (response: any) => {
-          setGenres(response);
+        onSuccess: (params) => {
+          setGenres(params);
         },
-        onError: () => {},
+        onError: () => console.log("Erro ao buscar gêneros"),
       });
     }
   }, [
@@ -66,17 +60,17 @@ export default function HomePage() {
   ]);
 
   useEffect(() => {
-    if (!debouncedQuery.trim()) return; // não faz nada se o campo estiver vazio
+    if (!debouncedQuery.trim() && !selectedGenre) return;
 
     getMovieSearchModdleware({
-      query: debouncedQuery, // texto digitado
+      query: debouncedQuery,
       page: 1,
+      genre: selectedGenre,
       onSuccess: (response: any) => {
         setApiCache((prev) => ({
           ...prev,
           [1]: response.moviesSearch,
         }));
-        console.log("response", response.moviesSearch);
         setApiPage(1);
         setLocalPage(1);
         setTotalResults(response.totalPages);
@@ -84,11 +78,11 @@ export default function HomePage() {
       onError: () => {
         console.log("Erro ao buscar filmes");
       },
-      search: [],
+      // search: [],
       total: 0,
       totalPages: 0,
     });
-  }, [debouncedQuery]);
+  }, [debouncedQuery, selectedGenre]);
 
   const movies20 = apiCache[apiPage] ?? [];
   const moviesToShow =
@@ -113,7 +107,11 @@ export default function HomePage() {
       },
     });
   }
-
+  const mapGenres = (genreIds: number[]) => {
+    return genreIds
+      .map((id) => genres?.genreMovies?.find((g) => g.id === id)?.name)
+      .filter(Boolean) as string[];
+  };
   return (
     <div
       className="h-screen w-full bg-cover bg-center"
@@ -138,9 +136,34 @@ export default function HomePage() {
             />
             <Button
               iconLeft="FilterIcon"
-              className="w-14 h-14 bg-[color:var(--purple-dark-alpha-2)]/20"
+              className={`w-14 h-14 ${
+                showGenres
+                  ? "bg-purple-600 text-white" // cor quando ativo
+                  : "bg-[color:var(--purple-dark-alpha-2)]/20"
+              }`}
+              onClick={() => setShowGenres((prev) => !prev)}
             />
           </div>
+
+          {showGenres && (
+            <div className="flex flex-wrap gap-2 p-4 bg-[color:var(--mauve-dark-alpha-3)] rounded-xs">
+              {console.log("genres", genres)}
+              {genres?.genreMovies?.map((item: any) => (
+                <Button
+                  key={item.id}
+                  text={item.name}
+                  onClick={() =>
+                    setSelectedGenre(item.id === selectedGenre ? null : item.id)
+                  }
+                  className={`px-4 py-2 text-sm ${
+                    selectedGenre === item.id
+                      ? "bg-purple-600 text-white"
+                      : "bg-[color:var(--purple-dark-alpha-2)]/20 text-gray-300 hover:bg-[color:var(--purple-dark-alpha-3)]/50"
+                  }`}
+                ></Button>
+              ))}
+            </div>
+          )}
 
           <div className="w-full p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 bg-[color:var(--mauve-dark-alpha-3)]">
             {filteredMovies.map((movie: any) => {

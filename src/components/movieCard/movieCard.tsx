@@ -17,7 +17,7 @@ function MovieCard({ title, imageUrl, rating, genres, id }: MovieCardProps) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={`/detalhes/${id}`}>
+    <Link href={`/detalhes/${id}`} className="flex justify-center items-center">
       <div
         className="relative w-52 h-80 rounded-xl overflow-hidden shadow-lg cursor-pointer group"
         onMouseEnter={() => setHovered(true)}
