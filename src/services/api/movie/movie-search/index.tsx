@@ -1,6 +1,7 @@
 import { api } from "@/services/api";
 
 export const getSearchMovies = async (query: string, page: number = 1) => {
+  console.log("query", query, page);
   try {
     const { data } = await api.get("/search/movie", {
       params: {

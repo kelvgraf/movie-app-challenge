@@ -19,14 +19,20 @@ export default function HomePage() {
   const [apiPage, setApiPage] = useState(1);
   const [localPage, setLocalPage] = useState(1);
   const [totalResults, setTotalResults] = useState<number | null>(null);
-  const [movieSearch, setMovieSearch] = useState("");
-
+  const [search, setSearch] = useState("");
   const [genres, setGenres] = useState<{ genreMovie?: { genres?: any[] } }>();
-  console.log("genres", genres);
-  const debouncedQuery = useDebounce(movieSearch, 600);
+  const debouncedQuery = useDebounce(search, 600);
 
-  // busca filmes + gêneros
+  const mapGenres = (genreIds: number[]) => {
+    return genreIds
+      .map(
+        (id) => genres?.genreMovie?.genres?.find((g: any) => g.id === id)?.name
+      )
+      .filter(Boolean) as string[];
+  };
+
   useEffect(() => {
+    console.log("!apiCache[apiPage]", apiCache, apiPage);
     if (!apiCache[apiPage]) {
       getMovieMiddleware({
         page: apiPage,
@@ -51,51 +57,84 @@ export default function HomePage() {
         onError: () => {},
       });
     }
-  }, [apiCache, apiPage, genres?.genreMovie?.genres?.length, totalResults]);
+  }, [
+    apiCache,
+    apiPage,
+    genres?.genreMovie?.genres?.length,
+    totalResults,
+    search,
+  ]);
 
   useEffect(() => {
-    (async () => {
-      if (!debouncedQuery.trim()) {
-        await getMovieSearchModdleware({
-          onSuccess: (response: any) => {
-            setApiCache((prev) => ({
-              ...prev,
-              [apiPage]: response.movies,
-            }));
-            if (!totalResults) {
-              setTotalResults(response.totalPages);
-            }
-          },
-          onError: () => {},
-          page: 0,
-        });
-        return;
-      }
-    })();
-  }, [apiPage, debouncedQuery, localPage, totalResults]);
+    if (!debouncedQuery.trim()) return; // não faz nada se o campo estiver vazio
+
+    getMovieSearchModdleware({
+      query: debouncedQuery, // texto digitado
+      page: 1,
+      onSuccess: (response: any) => {
+        setApiCache((prev) => ({
+          ...prev,
+          [1]: response.moviesSearch,
+        }));
+        console.log("response", response.moviesSearch);
+        setApiPage(1);
+        setLocalPage(1);
+        setTotalResults(response.totalPages);
+      },
+      onError: () => {
+        console.log("Erro ao buscar filmes");
+      },
+      search: [],
+      total: 0,
+      totalPages: 0,
+    });
+  }, [debouncedQuery]);
 
   const movies20 = apiCache[apiPage] ?? [];
-  const isFirstHalf = localPage === 1;
-  const moviesToShow = isFirstHalf
-    ? movies20.slice(0, 10)
-    : movies20.slice(10, 20);
+  const moviesToShow =
+    localPage === 1 ? movies20.slice(0, 10) : movies20.slice(10, 20);
 
   const uiTotalPages = totalResults ? Math.ceil(totalResults / 10) : 0;
+  const filteredMovies = moviesToShow;
+
+  function handleCleanSrach() {
+    if (!search) return;
+    setSearch("");
+    getMovieMiddleware({
+      page: 1,
+      onSuccess: (response: any) => {
+        setApiCache({ 1: response.movies });
+        setApiPage(1);
+        setLocalPage(1);
+        setTotalResults(response.totalPages);
+      },
+      onError: () => {
+        console.log("Erro ao carregar filmes padrão");
+      },
+    });
+  }
 
   return (
-    <div>
-      <Header />
-      <main className="w-full mx-auto p-4 flex justify-center">
-        <div className="max-w-[1920px] w-full mx-auto flex flex-col justify-between items-center gap-6">
-          <div className="w-[488px] flex justify-center align-center gap-2.5">
+    <div
+      className="h-screen w-full bg-cover bg-center"
+      style={{
+        backgroundImage:
+          "url('/imagens/backgropund-krists-luhaers-unsplash.png')",
+      }}
+    >
+      <Header className="bg-[color:var(--mauve-dark-1)]/80" />
+      <main className="w-full mx-auto p-4 flex justify-center bg-[color:var(--mauve-dark-1)]/80">
+        <div className="max-w-[1920px] w-full flex flex-col justify-between items-center gap-6">
+          <div className="w-[488px] flex justify-center items-center gap-2.5">
             <Input
+              type="text"
               placeholder={"Pesquise por filmes"}
-              iconRight={movieSearch ? "CloseIcon" : "SearchIcon"}
+              iconRight={search ? "CloseIcon" : "SearchIcon"}
               className="w-full h-14 fill-[color:var(--mauve-dark-11)]"
               height={56}
-              value={movieSearch}
-              onChange={(e) => setMovieSearch(e.target.value)}
-              onClickIcon={() => setMovieSearch("")}
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
+              onClickIcon={handleCleanSrach}
             />
             <Button
               iconLeft="FilterIcon"
@@ -104,16 +143,9 @@ export default function HomePage() {
           </div>
 
           <div className="w-full p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 bg-[color:var(--mauve-dark-alpha-3)]">
-            {moviesToShow.map((movie: any) => {
-              const movieGenres = movie?.genre_ids
-                ?.map(
-                  (id: number) =>
-                    genres?.genreMovie?.genres?.find(
-                      (item: any) => item.id === id
-                    )?.name
-                )
-                .filter(Boolean);
-              console.log("moviemoviemovie", movieGenres);
+            {filteredMovies.map((movie: any) => {
+              const movieGenres = mapGenres(movie.genre_ids);
+
               return (
                 <MovieCard
                   key={movie.id}
@@ -131,6 +163,7 @@ export default function HomePage() {
             })}
           </div>
 
+          {/* Paginação */}
           <div className="flex justify-center gap-4 mt-6">
             <Pagination
               currentPage={(apiPage - 1) * 2 + localPage}

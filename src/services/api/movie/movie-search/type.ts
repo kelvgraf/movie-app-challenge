@@ -2,13 +2,12 @@ export interface IgetSearchMovies {
   onSuccess?: (onSuccessParams?: IOnSuccessParams) => void;
   onError?: (params?: IgetSearchMovies) => void;
   page: number;
-}
-
-export enum IPatientType {
-  interned,
+  query: string;
 }
 
 interface IOnSuccessParams {
   moviesSearch: any[];
   params: IgetSearchMovies;
+  total: number;
+  totalPages: number;
 }

@@ -12,7 +12,6 @@ export const getMovieMiddleware = async (params: IgetMovies): Promise<void> => {
     const totalPages = data?.total_pages;
 
     if (totalMovieFound && hasMovie) {
-      console.log("data", data);
       if (params?.onSuccess) {
         params.onSuccess({
           movies: data?.results,
