@@ -4,6 +4,8 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/utils/utils";
+import { RatingCircle } from "../rating-circle/rating-circle";
+import { Typography } from "../typography/typography";
 
 interface MovieCardProps {
   title: string;
@@ -17,7 +19,7 @@ function MovieCard({ title, imageUrl, rating, genres, id }: MovieCardProps) {
   const [hovered, setHovered] = useState(false);
 
   return (
-    <Link href={`/detalhes/${id}`} className="flex justify-center items-center">
+    <Link href={`/movies/${id}`} className="flex justify-center items-center">
       <div
         className="relative w-52 h-80 rounded-xl overflow-hidden shadow-lg cursor-pointer group"
         onMouseEnter={() => setHovered(true)}
@@ -48,16 +50,20 @@ function MovieCard({ title, imageUrl, rating, genres, id }: MovieCardProps) {
           )}
         >
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="relative w-20 h-20 rounded-full border-[6px] border-yellow-400 flex items-center justify-center">
-              <span className="text-lg font-bold text-yellow-400">
-                {rating}%
-              </span>
-            </div>
+            <RatingCircle rating={Math.round(rating * 10)} />
           </div>
 
-          <div className="absolute bottom-0 w-full p-3 text-center">
-            <p className="text-white font-semibold">{title}</p>
-            <p className="text-sm text-gray-300">{genres.join(", ")}</p>
+          <div className="absolute bottom-0 w-full p-3">
+            <Typography
+              text={title}
+              variant="p"
+              className="text-white font-semibold"
+            />
+            <Typography
+              text={genres.join(", ")}
+              variant="p"
+              className="text-sm text-gray-300"
+            />
           </div>
         </div>
       </div>

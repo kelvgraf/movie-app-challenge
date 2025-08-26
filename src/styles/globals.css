@@ -1,15 +1,9 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -26,7 +20,6 @@ body {
 }
 
 :root {
-  /* ================= PURPLE DARK ================= */
   --purple-dark-1: #18111b;
   --purple-dark-2: #1e1523;
   --purple-dark-3: #3d224e;
@@ -41,7 +34,7 @@ body {
 
   --purple-dark-alpha-1: #b412f90b;
   --purple-dark-alpha-2: #b744f7;
-  --purple-dark-alpha-3: #c150ff2d;
+  --purple-dark-alpha-3: #c150ff;
   --purple-dark-alpha-4: #bb53fd42;
   --purple-dark-alpha-5: #be5cfd51;
   --purple-dark-alpha-6: #c16dfd61;
@@ -52,7 +45,6 @@ body {
   --purple-dark-alpha-11: #d19dff;
   --purple-dark-alpha-12: #f1ddfffa;
 
-  /* ================= PURPLE ================= */
   --purple-1: #fefcfe;
   --purple-2: #fbf7fe;
   --purple-3: #f7edfe;
@@ -79,7 +71,6 @@ body {
   --purple-alpha-11: #52009aba;
   --purple-alpha-12: #250049df;
 
-  /* ================= MAUVE DARK ================= */
   --mauve-dark-1: #121113;
   --mauve-dark-2: #1a191b;
   --mauve-dark-3: #232225;
@@ -106,7 +97,6 @@ body {
   --mauve-dark-alpha-11: #f5f1ffb7;
   --mauve-dark-alpha-12: #fdfdffef;
 
-  /* ================= MAUVE ================= */
   --mauve-1: #fdfcfd;
   --mauve-2: #faf9fb;
   --mauve-3: #f2eff3;
@@ -132,4 +122,111 @@ body {
   --mauve-alpha-10: #0500197d;
   --mauve-alpha-11: #0400119c;
   --mauve-alpha-12: #020008e0;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+  --color-purple-dark-1: var(--purple-dark-1);
+  --color-purple-dark-2: var(--purple-dark-2);
+  --color-purple-dark-3: var(--purple-dark-3);
+  --color-purple-dark-4: var(--purple-dark-4);
+  --color-purple-dark-5: var(--purple-dark-5);
+  --color-purple-dark-6: var(--purple-dark-6);
+  --color-purple-dark-7: var(--purple-dark-7);
+  --color-purple-dark-8: var(--purple-dark-8);
+  --color-purple-dark-9: var(--purple-dark-9);
+  --color-purple-dark-10: var(--purple-dark-10);
+  --color-purple-dark-11: var(--purple-dark-11);
+
+  --color-purple-dark-alpha-1: var(--purple-dark-alpha-1);
+  --color-purple-dark-alpha-2: var(--purple-dark-alpha-2);
+  --color-purple-dark-alpha-3: var(--purple-dark-alpha-3);
+  --color-purple-dark-alpha-4: var(--purple-dark-alpha-4);
+  --color-purple-dark-alpha-5: var(--purple-dark-alpha-5);
+  --color-purple-dark-alpha-6: var(--purple-dark-alpha-6);
+  --color-purple-dark-alpha-7: var(--purple-dark-alpha-7);
+  --color-purple-dark-alpha-8: var(--purple-dark-alpha-8);
+  --color-purple-dark-alpha-9: var(--purple-dark-alpha-9);
+  --color-purple-dark-alpha-10: var(--purple-dark-alpha-10);
+  --color-purple-dark-alpha-11: var(--purple-dark-alpha-11);
+
+  --color-purple-1: var(--purple-1);
+  --color-purple-2: var(--purple-2);
+  --color-purple-3: var(--purple-3);
+  --color-purple-4: var(--purple-4);
+  --color-purple-5: var(--purple-5);
+  --color-purple-6: var(--purple-6);
+  --color-purple-7: var(--purple-7);
+  --color-purple-8: var(--purple-8);
+  --color-purple-9: var(--purple-9);
+  --color-purple-10: var(--purple-10);
+  --color-purple-11: var(--purple-11);
+
+  --color-purple-alpha-1: var(--purple-alpha-1)
+  --color-purple-alpha-2: var(--purple-alpha-2);
+  --color-purple-alpha-3: var(--purple-alpha-3);
+  --color-purple-alpha-4: var(--purple-alpha-4);
+  --color-purple-alpha-5: var(--purple-alpha-5);
+  --color-purple-alpha-6: var(--purple-alpha-6);
+  --color-purple-alpha-7: var(--purple-alpha-7);
+  --color-purple-alpha-8: var(--purple-alpha-8);
+  --color-purple-alpha-9: var(--purple-alpha-9);
+  --color-purple-alpha-10: var(--purple-alpha-10);
+  --color-purple-alpha-11: var(--purple-alpha-11);
+  --color-purple-alpha-12:  var(--purple-alpha-12);
+
+  --color-mauve-dark-1: var(--mauve-dark-1);
+  --color-mauve-dark-2: var(--mauve-dark-2);
+  --color-mauve-dark-3: var(--mauve-dark-3);
+  --color-mauve-dark-4: var(--mauve-dark-4);
+  --color-mauve-dark-5: var(--mauve-dark-5);
+  --color-mauve-dark-6: var(--mauve-dark-6);
+  --color-mauve-dark-7: var(--mauve-dark-7);
+  --color-mauve-dark-8: var(--mauve-dark-8);
+  --color-mauve-dark-9: var(--mauve-dark-9);
+  --color-mauve-dark-10: var(--mauve-dark-10);
+  --color-mauve-dark-11: var(--mauve-dark-11);
+  --color-mauve-dark-12: var(--mauve-dark-12);
+
+  --color-mauve-dark-alpha-1: var(--mauve-dark-alpha-1);
+  --color-mauve-dark-alpha-2: var(--mauve-dark-alpha-2);
+  --color-mauve-dark-alpha-3: var(--mauve-dark-alpha-3);
+  --color-mauve-dark-alpha-4: var(--mauve-dark-alpha-4);
+  --color-mauve-dark-alpha-5: var(--mauve-dark-alpha-5);
+  --color-mauve-dark-alpha-6: var(--mauve-dark-alpha-6);
+  --color-mauve-dark-alpha-7: var(--mauve-dark-alpha-7);
+  --color-mauve-dark-alpha-8: var(--mauve-dark-alpha-8);
+  --color-mauve-dark-alpha-9: var(--mauve-dark-alpha-9);
+  --color-mauve-dark-alpha-10: var(--mauve-dark-alpha-10);
+  --color-mauve-dark-alpha-11: var(--mauve-dark-alpha-11);
+  --color-mauve-dark-alpha-12: var(--mauve-dark-alpha-12);
+
+  --color-mauve-1: var(--mauve-1);
+  --color-mauve-2: var(--mauve-2);
+  --color-mauve-3: var(--mauve-3);
+  --color-mauve-4: var(--mauve-4);
+  --color-mauve-5: var(--mauve-5);
+  --color-mauve-6: var(--mauve-6);
+  --color-mauve-7: var(--mauve-7);
+  --color-mauve-8: var(--mauve-8);
+  --color-mauve-9: var(--mauve-9);
+  --color-mauve-10: var(--mauve-10);
+  --color-mauve-11: var(--mauve-11);
+  --color-mauve-12: var(--mauve-12);
+
+  --color-mauve-alpha-1: var(--mauve-alpha-1);
+  --color-mauve-alpha-2: var(--mauve-alpha-2);
+  --color-mauve-alpha-3: var(--mauve-alpha-3);
+  --color-mauve-alpha-4: var(--mauve-alpha-4);
+  --color-mauve-alpha-5: var(--mauve-alpha-5);
+  --color-mauve-alpha-6: var(--mauve-alpha-6);
+  --color-mauve-alpha-7: var(--mauve-alpha-7);
+  --color-mauve-alpha-8: var(--mauve-alpha-8);
+  --color-mauve-alpha-9: var(--mauve-alpha-9);
+  --color-mauve-alpha-10: var(--mauve-alpha-10);
+  --color-mauve-alpha-11: var(--mauve-alpha-11);
+  --color-mauve-alpha-12: var(--mauve-alpha-12);
 }

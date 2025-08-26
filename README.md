@@ -1,36 +1,79 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Movie App Challenge
 
-## Getting Started
+Este projeto foi desenvolvido como um desafio para consumir a [API do The Movie Database (TMDb)](https://developer.themoviedb.org/docs/getting-started), exibindo informações sobre filmes e permitindo que o usuário filtre por nome ou gênero.
 
-First, run the development server:
+A aplicação foi criada utilizando **React / Next.js**, com integração à API via **Axios**, e estilização com **TailwindCSS**.
+
+Escolhi essas stacks para aproveitar o desafio e também estudar coisas novas, explorando ferramentas modernas do ecossistema JavaScript e boas práticas de desenvolvimento.
+
+---
+
+## Funcionalidades
+
+- Buscar filmes na API do TMDb.
+- Listar os principais filmes na tela inicial.
+- Filtrar filmes por **nome**.
+- Filtrar filmes por **gênero** (ex: Ação, Drama, Comédia, etc).
+- Estrutura organizada de **services** para chamadas à API.
+
+---
+
+## Tecnologias Utilizadas
+
+- [React](https://react.dev/) ou [Next.js](https://nextjs.org/)
+- [Axios](https://axios-http.com/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [The Movie Database API (TMDb)](https://developer.themoviedb.org/)
+
+---
+
+## Como Rodar o Projeto
+
+### 1. Clonar o repositório
+
+```bash
+git clone https://github.com/seu-usuario/movie-app-challenge.git
+cd movie-app-challenge
+```
+
+### 2. Instalar dependências
+
+```bash
+npm install
+# ou
+yarn install
+```
+
+### 3.Crie um arquivo .env.local na raiz do projeto e adicione sua chave da API do TMDb:
+
+```bash
+NEXT_PUBLIC_TMDB_API_KEY=coloque_sua_api_key_aqui
+```
+
+### 4. Rodar o servidor de desenvolvimento
 
 ```bash
 npm run dev
-# or
+
+# ou
+
 yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Estrutura do Projeto
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+movie-app-challenge/
+├── src/
+│   ├── app/
+│   ├── components/
+│   ├── services/
+│   ├── middleware/
+│   └── utils/
+├── public/
+├── .env.local.example
+├── package.json
+└── README.md
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Desenvolvido por Kelvin Almeida

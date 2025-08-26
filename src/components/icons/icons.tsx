@@ -1,4 +1,3 @@
-// components/icons/Icons.tsx
 "use client";
 
 import { LetsIcons, LetsIconNames } from "./index";

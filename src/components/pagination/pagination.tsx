@@ -17,8 +17,7 @@ function Pagination({
   ).slice(Math.max(0, currentPage - 3), Math.min(totalPages, currentPage + 2));
 
   return (
-    <div className="flex items-center justify-center gap-2 mt-6">
-      {/* Botão anterior */}
+    <div className="flex items-center justify-center gap-2 ">
       <button
         onClick={() => onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
@@ -27,7 +26,6 @@ function Pagination({
         <Icons size={28} name="ArrowLeftIcon" color="var(--mauve-dark-12)" />
       </button>
 
-      {/* Páginas */}
       {visiblePages.map((page) => (
         <button
           key={page}
@@ -35,7 +33,7 @@ function Pagination({
           className={`px-4 py-2 rounded ${
             page === currentPage
               ? "bg-gray-900 text-white"
-              : "bg-purple-600 text-white hover:bg-purple-700"
+              : "bg-purple-8 text-white hover:bg-purple-12"
           }`}
         >
           {page}

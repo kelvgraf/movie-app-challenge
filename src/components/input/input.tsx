@@ -1,8 +1,7 @@
-// components/ui/Input.tsx
 "use client";
 
 import { InputHTMLAttributes, forwardRef } from "react";
-import { cn } from "@/utils/utils"; // função helper p/ concatenar classes
+import { cn } from "@/utils/utils";
 
 export interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;

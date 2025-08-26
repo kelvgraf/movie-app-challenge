@@ -1,4 +1,3 @@
-// components/icons/SearchIcon.tsx
 export const ArrowLeftIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
     width="24"

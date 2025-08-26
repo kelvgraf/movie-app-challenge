@@ -5,6 +5,8 @@ import { Poppins } from "next/font/google";
 import { ReactNode } from "react";
 
 import { ThemeProvider } from "@/components/theme-provider";
+import { Header } from "./components/header/header";
+import { Footer } from "./components/footer/footer";
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -27,7 +29,9 @@ async function RootLayout({ children }: { children: ReactNode }) {
           enableSystem
           disableTransitionOnChange
         >
+          <Header />
           {children}
+          <Footer />
         </ThemeProvider>
       </body>
     </html>

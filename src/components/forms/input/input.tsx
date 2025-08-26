@@ -37,7 +37,6 @@ function Input({
       {label && <Label label={label} id={id || name} />}
 
       <div className="relative flex items-center">
-        {/* Left Icon */}
         {iconLeft && (
           <span
             onClick={onClickIcon}
@@ -46,11 +45,10 @@ function Input({
               onClickIcon && "cursor-pointer"
             )}
           >
-            <Icons name={iconLeft} size={18} className="text-gray-500" />
+            <Icons name={iconLeft} size={18} className="text-mauve-dark-9" />
           </span>
         )}
 
-        {/* Input field */}
         <InputUI
           id={id || name}
           name={name}
@@ -67,7 +65,6 @@ function Input({
           {...rest}
         />
 
-        {/* Right Icon */}
         {iconRight && (
           <span
             onClick={onClickIcon}
