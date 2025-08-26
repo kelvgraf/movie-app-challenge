@@ -7,7 +7,7 @@ import Link from "next/link";
 import { request } from "@/services/api";
 
 import { Typography } from "@/components/typography";
-import { InfoMovieDetail } from "@/app/movies/components/movie-details";
+import { InfoMovieDetail } from "@/app/movies/(details-page)/components/index";
 import { Icons } from "@/components/icons/icons";
 import { formatDateToBR, formatCurrentToBR } from "@/utils/utils";
 import { RatingCircle } from "@/components/rating-circle/rating-circle";
