@@ -35,11 +35,11 @@ function Button({
         <Spinner className="w-6 h-6" />
       ) : (
         <>
-          {iconLeft && <Icons name={iconLeft} />}
+          {iconLeft && <Icons name={iconLeft} className={className} />}
 
           {text && <Typography text={text} />}
 
-          {iconRight && <Icons name={iconRight} />}
+          {iconRight && <Icons name={iconRight} className={className} />}
         </>
       )}
     </ButtonUI>

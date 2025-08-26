@@ -33,14 +33,14 @@ function MovieCard({ title, imageUrl, rating, genres, id }: MovieCardProps) {
         />
 
         <div className="absolute bottom-0 w-full bg-gradient-to-t from-black/80 to-transparent p-3">
-          <p
+          <Typography
+            text={title}
+            variant="p"
             className={cn(
               "text-white font-semibold transition-opacity duration-300",
               hovered && "opacity-0"
             )}
-          >
-            {title}
-          </p>
+          />
         </div>
 
         <div

@@ -145,7 +145,7 @@ export default function MovieDetailsPage() {
       >
         <div className="h-full flex flex-col bg-mauve-dark-1/50">
           <Link href={`/`} className="flex items-center pt-4 pl-4">
-            <Icons name={"ArrowLeftIcon"} />
+            <Icons name={"ArrowLeftIcon"} className="fill-transparent" />
             <Typography text={"Voltas"} />
           </Link>
           <div className="max-w-[1920px] mx-auto px-6 py-10 grid grid-cols-1 lg:grid-cols-3 gap-10 ">
@@ -169,7 +169,7 @@ export default function MovieDetailsPage() {
                 <Typography
                   text={movie?.original_title}
                   variant="h3"
-                  className={"text-[16px] font-normal text-mauve-dark-11"}
+                  className={"text-[16px] font-normal text-mauve-dark-12"}
                 />
               </span>
               <span className="grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 grid  md:hidden">
@@ -221,8 +221,8 @@ export default function MovieDetailsPage() {
                 </div>
               </div>
             </div>
-            <div className="w-full max-w-3xl grid gap-4">
-              <span className="grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 hidden  md:grid">
+            <div className="w-fit h-fit max-w-3xl grid gap-4 justify-center items-center justify-items-end">
+              <span className="grid-cols-1 md:grid-cols-3 lg:grid-cols-3 gap-4 hidden justify-center items-center w-fit h-fit md:grid">
                 <InfoMovieDetail
                   label={"Popularidade"}
                   infoDetail={movie.popularity}
@@ -233,7 +233,7 @@ export default function MovieDetailsPage() {
                 />
                 <RatingCircle rating={Math.round(movie.vote_average * 10)} />
               </span>
-              <span className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <span className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-fit h-fit gap-4">
                 <InfoMovieDetail
                   label={"Lançamento"}
                   infoDetail={formatDateToBR(movie.release_date)}
@@ -257,7 +257,7 @@ export default function MovieDetailsPage() {
                     .join(", ")}
                 />
               </span>
-              <span className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <span className="grid grid-cols-1 md:grid-cols-3 justify-center items-center w-fit h-fit gap-4">
                 <InfoMovieDetail
                   label={"Orçamento"}
                   infoDetail={formatCurrentToBR(movie.budget)}
@@ -292,7 +292,7 @@ export default function MovieDetailsPage() {
               allowFullScreen
             />
           ) : (
-            <p>Trailer não disponível.</p>
+            <Typography text="Trailer não disponível." variant="p" />
           )}
         </div>
       </div>

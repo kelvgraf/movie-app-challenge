@@ -182,7 +182,7 @@ export default function MovieList() {
             type="text"
             placeholder={"Pesquise por filmes"}
             iconRight={search ? "CloseIcon" : "SearchIcon"}
-            className="w-full h-14 fill-mauve-dark-11 dark:fill-mauve-dark-2 bg-white"
+            className="w-full h-14 pl-2 fill-mauve-dark-11 dark:fill-mauve-dark-2 bg-mauve-dark-2 dark:bg-mauve-dark-11 text-mauve-dark-12 dark:text-mauve-dark-1 font-semibold"
             height={56}
             value={search}
             onChange={(e) => setSearch(e.target.value)}
@@ -190,10 +190,10 @@ export default function MovieList() {
           />
           <Button
             iconLeft="FilterIcon"
-            className={`w-14 h-14 ${
-              showGenres
-                ? "bg-purple-dark-alpha-2 dark:bg--mauve-dark-2"
-                : "bg-purple-dark-alpha-2/20 dark:bg-mauve-dark-2"
+            className={`w-14 h-14 fill-transparent bg-transparent ${
+              showGenres || selectedGenre
+                ? "bg-purple-dark-alpha-2 dark:bg--mauve-dark-2/20"
+                : "bg-purple-dark-alpha-2/20 dark:bg-mauve-dark-2/20"
             }`}
             onClick={() => setShowGenres((prev) => !prev)}
           />
@@ -210,8 +210,8 @@ export default function MovieList() {
                 }
                 className={`px-4 py-2 text-sm ${
                   selectedGenre === item.id
-                    ? "bg-purple-600 text-white"
-                    : "bg-purple-dark-alpha-2/20 text-gray-300 hover:bg-purple-dark-alpha-3/50"
+                    ? "bg-purple-600 text-mauve-dark-12 dark:text-mauve-dark-1"
+                    : "bg-purple-dark-alpha-2/20 text-mauve-dark-12 dark:text-mauve-dark-1 hover:bg-purple-dark-alpha-3/50"
                 }`}
               ></Button>
             ))}
@@ -226,7 +226,7 @@ export default function MovieList() {
             ))}
           </div>
         ) : (
-          <div className="w-full p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 bg-mauve-dark-alpha-3 dark:bg-mauve-dark-alpha-12">
+          <div className="w-full p-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6 bg-mauve-dark-alpha-3 dark:bg-mauve-dark-alpha-12/20">
             {filteredMovies?.length > 0 &&
               filteredMovies.map((movie: IMovieProps) => {
                 const movieGenres = mapGenres(movie.genre_ids);

@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Icons } from "@/components/icons/icons";
 import LogoLight from "@/../public/imagens/logo-cubos-light.svg";
 import LogoDark from "@/../public/imagens/logo-cubos-dark.svg";
+import { Typography } from "@/components/typography/typography";
 
 function Header(className: object | string | undefined) {
   const { theme, setTheme } = useTheme();
@@ -25,9 +26,11 @@ function Header(className: object | string | undefined) {
             width={120}
           />
 
-          <p className="font-bold text-xl text-mauve-dark-12 dark:text-mauve-dark-3">
-            Movies
-          </p>
+          <Typography
+            text={"Movies"}
+            variant={"p"}
+            className="font-bold text-xl text-mauve-dark-12 dark:text-mauve-dark-3"
+          />
         </div>
         <button
           className="cursor-pointer w-16 h-12 rounded-l-xs bg-purple-dark-alpha-2/20 dark:bg-mauve-dark-8 flex justify-center items-center"

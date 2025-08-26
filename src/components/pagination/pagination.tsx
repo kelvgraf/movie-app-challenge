@@ -23,7 +23,7 @@ function Pagination({
         disabled={currentPage === 1}
         className="px-3 py-2 rounded bg-gray-800 text-white disabled:opacity-50"
       >
-        <Icons size={28} name="ArrowLeftIcon" color="var(--mauve-dark-12)" />
+        <Icons size={28} name="ArrowLeftIcon" color="mauve-dark-12" />
       </button>
 
       {visiblePages.map((page) => (
@@ -45,7 +45,7 @@ function Pagination({
         disabled={currentPage === totalPages}
         className="px-3 py-2 rounded bg-gray-800 text-white disabled:opacity-50"
       >
-        <Icons size={28} name="ArrowRightIcon" color="var(--mauve-dark-12)" />
+        <Icons size={28} name="ArrowRightIcon" color="mauve-dark-12" />
       </button>
     </div>
   );
